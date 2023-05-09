@@ -1,12 +1,20 @@
 {
-    "users":[
-        {
-            "id":1,
-            "name": "Julia"
-        },
-        {
-            "id":2,
-            "name": "Namiq"
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "Julia"
+    },
+    {
+      "id": 2,
+      "name": "Namiq"
+    },
+    {
+      "name": "Cecilia Stamm",
+      "id": 3
+    },
+    {
+      "name": "George Spencer",
+      "id": 4
+    }
+  ]
 }

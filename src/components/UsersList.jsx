@@ -1,10 +1,18 @@
 import React from 'react'
-import { useFetchUsersQuery } from '../store'
+import { useAddUserMutation, useFetchUsersQuery } from '../store'
 import Skeleton from '@mui/material/Skeleton'
+import Button from '@mui/material/Button'
 import UsersListItem from './UsersListItem';
+import CircularProgress from '@mui/material/CircularProgress'
 
 function UsersList() {
   const {data, isError, isFetching} = useFetchUsersQuery();
+
+  const [addUser,results] = useAddUserMutation();
+
+  const handleUserAdd = () => {
+        addUser();
+  }
   
   let content;
 
@@ -24,7 +32,15 @@ function UsersList() {
 
 
   return (
+   <>
+     <div className='topArrangement'>
+      <h1>User</h1>
+      <Button variant='outlined' onClick={handleUserAdd}>
+        {results.isLoading ? (<CircularProgress/>) : <span>Add User</span> }
+      </Button>
+    </div>
     <div>{content}</div>
+   </>
   )
 }
 
