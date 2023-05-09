@@ -31,3 +31,7 @@ h1{
 button{
   cursor: pointer;
 }
+
+svg{
+  cursor: pointer;
+}

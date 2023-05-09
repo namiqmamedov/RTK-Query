@@ -24,5 +24,17 @@
       "name": "Forrest Kozey",
       "id": 8
     }
+  ],
+  "albums": [
+    {
+      "userID": 2,
+      "title": "NY",
+      "id": 15
+    },
+    {
+      "userID": 2,
+      "title": "Incredible Bronze Shoes",
+      "id": 16
+    }
   ]
 }

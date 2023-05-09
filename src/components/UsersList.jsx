@@ -11,7 +11,7 @@ function UsersList() {
   const [addUser,results] = useAddUserMutation();
 
   const handleUserAdd = () => {
-        addUser();
+        addAlbum();
   }
   
   let content;
@@ -33,7 +33,7 @@ function UsersList() {
 
   return (
    <>
-     <div className='topArrangement'>
+    <div className='topArrangement'>
       <h1>User</h1>
       <Button variant='outlined' onClick={handleUserAdd}>
         {results.isLoading ? (<CircularProgress/>) : <span>Add User</span> }
