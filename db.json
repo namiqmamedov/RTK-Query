@@ -1,10 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Julia"
-    },
-    {
       "id": 2,
       "name": "Namiq"
     },
@@ -15,6 +11,18 @@
     {
       "name": "George Spencer",
       "id": 4
+    },
+    {
+      "name": "Leticia Hettinger",
+      "id": 6
+    },
+    {
+      "name": "Hugo Swaniawski",
+      "id": 7
+    },
+    {
+      "name": "Forrest Kozey",
+      "id": 8
     }
   ]
 }

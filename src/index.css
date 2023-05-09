@@ -22,3 +22,12 @@
 h1{
   color: black;
 }
+
+.panelMain{
+  background: lightgrey;
+  border-radius: 30px;
+}
+
+button{
+  cursor: pointer;
+}

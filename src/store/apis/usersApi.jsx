@@ -50,10 +50,7 @@ const usersApi = createApi({
                 query:(user)=>{
                     return {
                         url:`/users/${user.id}`,
-                        method: 'DELETE',
-                        body:{
-                            name:"Namiq"
-                        }
+                        method: 'DELETE'
                     }
                 }
             })
