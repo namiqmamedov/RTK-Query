@@ -8,8 +8,8 @@ const pause = (duration) => {
     })
 }
 
-const albumsApi = createApi({
-    reducerPath: 'albums',
+const photosApi = createApi({
+    reducerPath: 'photos',
     baseQuery: fetchBaseQuery({
         baseUrl:'http://localhost:5174',
         fetchFn: async(...args)=>{
@@ -19,48 +19,49 @@ const albumsApi = createApi({
     }),
     endpoints(builder){ // datalari cekmek , silmek ucun .. 
          return {
-            fetchAlbums:builder.query({
-                providesTags:(result,error,user)=>{
-                    const tags = result.map((album)=>{
-                        return { type:'Album',id:album.id}
+            fetchPhotos:builder.query({
+                providesTags:(result,error,album)=>{
+                    const tags = result.map((photo)=>{
+                        return { type:'Photo',id:photo.id}
                     }) // result nece dene element varsa hamsini donderir remove,add ve s  
                     tags.push({
-                        type:'UsersAlbums',id:user.id
+                        type:'AlbumPhoto',id:album.id
                     }); // refetching
                     return tags;
                 },
-                query:(user)=>{
+                query:(album)=>{
                     return {
-                        url:'/albums',
+                        url:'/photos',
                         method: 'GET',
                         params: {
-                            userID:user.id
+                            albumID:album.id
                         }
                     }
                 }
             }),
-            addAlbum:builder.mutation({
-                invalidatesTags:(result,error,user) => {
-                    return[{type:'UsersAlbums',id:user.id}]
-                },
-                query:(user)=>{
-                    return {
-                        url:'/albums',
-                        method: 'POST',
-                        body:{
-                            userID: user.id,
-                            title: faker.commerce.productName()
-                        }
-                    }
-                }
-            }),
-            removeAlbum:builder.mutation({
-                invalidatesTags:(result,error,album)=>{
-                    return [{type:'Album',id:album.id}]
+            addPhoto:builder.mutation({
+                invalidatesTags:(result,error,album) => {
+                    return[{type:'AlbumPhoto',id:album.id}]
                 },
                 query:(album)=>{
                     return {
-                        url:`/albums/${album.id}`,
+                        url:'/photos',
+                        method: 'POST',
+                        body:{
+                            albumID: album.id,
+                            URL: faker.image.abstract(150,150,true),
+
+                        }
+                    }
+                }
+            }),
+            removePhoto:builder.mutation({
+                invalidatesTags:(result,error,photo)=>{
+                    return [{type:'Photo',id:photo.id}]
+                },
+                query:(photo)=>{
+                    return {
+                        url:`/photos/${photo.id}`,
                         method: 'DELETE'
                     }
                 }
@@ -70,5 +71,5 @@ const albumsApi = createApi({
     }
 });
 
-export const {useFetchAlbumsQuery,useAddAlbumMutation,useRemoveAlbumMutation} = albumsApi;
-export {albumsApi};
+export const {useFetchPhotosQuery,useAddPhotoMutation,useRemovePhotoMutation} = photosApi;
+export {photosApi};         
